@@ -1,11 +1,16 @@
 import Grid from "./Grid";
-import React from "react";
+import React, { useState } from "react";
+import { useRef } from "react";
+const CardBody = (props) => {
+ 
 
-const CardBody = () => {
   return (
     <div className=" h-360 w-full flex flex-row gap-0.5  text-[#abb9c6]">
       <div className="flex-3 flex flex-col gap-0.4">
-        <div className="h-7 pl-3"></div>
+        <button className="h-7 pl-3" onClick={()=>{
+          left_scroll();
+          gofnc();
+        }}>hello</button>
         <div className="h-7 pl-3">Mon</div>
         <div className="h-7 pl-3">Tue</div>
         <div className="h-7 pl-3">Wed</div>
@@ -14,7 +19,7 @@ const CardBody = () => {
         <div className="h-7 pl-3">Sat</div>
         <div className="h-7 pl-3">Sun</div>
       </div>
-      <div className="flex flex-row gap-0.5 overflow-x-auto">
+      <div ref={props.refer}  className="flex flex-row gap-0.5 overflow-x-scroll ">
         <Grid month="Jan" days={31} />
         <Grid month="Feb" days={28} />
         <Grid month="Mar" days={31} />

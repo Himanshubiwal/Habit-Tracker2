@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useRef,useState} from "react";
 import { ArrowLeft, Settings, ArrowRight, Dumbbell } from "lucide-react";
 
-const Navbar2 = () => {
+const Navbar2 = (props) => {
+
+
+
   return (
     <div className="text-[#abb9c6] font-extrabold flex flex-row h-15 justify-between  items-center pb-5">
       <div className="flex flex-row relative">
@@ -13,7 +16,10 @@ const Navbar2 = () => {
 
       <div className="flex flex-row gap-3  justify-between">
         <button className="border pl-2 box-border  pr-2 border-b-gray-300 rounded-xl bg-[#2e3339]">
-          <ArrowLeft size={20} strokeWidth={5} />
+          <ArrowLeft onClick={()=>{
+            props.left_scroll();
+            
+          }} size={20} strokeWidth={5} />
         </button>
 
         <div className="">
@@ -29,7 +35,12 @@ const Navbar2 = () => {
           <Settings strokeWidth={3} />
         </button>
         <button className="border pl-2 pr-2 border-b-gray-300 rounded-xl bg-[#2e3339]">
-          <ArrowRight size={20} strokeWidth={5} />
+          <ArrowRight 
+            onClick={()=>{
+              props.right_scroll();
+              
+            }} 
+          size={20} strokeWidth={5} />
         </button>
       </div>
     </div>
