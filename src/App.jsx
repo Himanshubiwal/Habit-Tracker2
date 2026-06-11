@@ -3,26 +3,22 @@ import Navbar from "./components/Navbar";
 import StreakCard from "./components/StreakCard/StreakCard";
 import Sidebar from "./components/Sidebar";
 import { useState } from "react";
-
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Documents from "./pages/Documents";
+import Calender from "./pages/Calender";
+import Store from "./pages/Store";
 
 const App = () => {
-
-
-const [Open, setOpen] = useState(true);
-function change(){
-  const newOpen = !Open;
-  setOpen(newOpen);
-  console.log("clicked")
-}
   return (
-    <div className="bg-[#2b2d38] flex flex-row p-4 gap-2">
-      <Sidebar open={Open} />
-      <div className="h-screen flex-1 gap-2 flex flex-col ">
-        <Navbar fnc={change}  />
-        <StreakCard />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/calender" element={<Calender />} />
+      <Route path="/documents" element={<Documents />} />
+      <Route path="/store" element={<Store />} />
+    </Routes>
   );
 };
 

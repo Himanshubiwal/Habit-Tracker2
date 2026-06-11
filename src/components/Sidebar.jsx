@@ -10,22 +10,19 @@ import {
 } from "lucide-react";
 
 const Sidebar = (props) => {
-  
-
   return (
     <div
-    
       className={`h-153   bg-[#1e1f24] rounded-xl text-[#abb9c6] overflow-hidden  transition-all duration-[1000ms] ${props.open ? "w-40 p-2" : "w-0 p-0"} `}
     >
       <div className="font-extrabold h-15 border-b-2 border-gray-500 flex justify-center items-center">
         <h1 className="text-2xl">TRACKER</h1>
       </div>
       <div className="flex flex-col gap-3">
-        <Btn name="DashBoard" icon={<LayoutDashboard />} />
-        <Btn name="Project" icon={<ShieldUser />} />
-        <Btn name="Calender" icon={<CalendarDays />} />
-        <Btn name="Document" icon={<FolderClosed />} />
-        <Btn name="Store" icon={<ShoppingCart />} />
+        <Btn name="DashBoard" icon={<LayoutDashboard />} path={"/"} />
+        <Btn name="Project" icon={<ShieldUser />} path="/projects" />
+        <Btn name="Calender" icon={<CalendarDays />} path="/calender" />
+        <Btn name="Document" icon={<FolderClosed />} path="/documents" />
+        <Btn name="Store" icon={<ShoppingCart />} path="/store" />
       </div>
       <div className="h-45"></div>
       <div>

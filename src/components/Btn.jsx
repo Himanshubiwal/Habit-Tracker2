@@ -6,13 +6,17 @@ import {
   FolderClosed,
   ShoppingCart,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Btn = (props) => {
-  
+  const navigate = useNavigate();
   return (
-    <div className="flex gap-3 items-center mt-2 pl-3 hover:scale-105 hover:bg-[#606c7a] rounded-md cursor-pointer transition-all duration-200 text-sm">
+    <div className="flex gap-3 items-center mt-2 pl-3 hover:scale-120  rounded-md hover:bg-[#1d4064] cursor-pointer transition-all duration-200 text-sm">
       {props.icon}
-      <span>{props.name}</span>
+      <span onClick={()=>{
+        
+        navigate(props.path)
+      }}>{props.name}</span>
     </div>
   );
 };
