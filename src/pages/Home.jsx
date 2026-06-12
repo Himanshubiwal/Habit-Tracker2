@@ -1,5 +1,5 @@
 import Sidebar from "../components/Sidebar";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import StreakCard from "../components/StreakCard/StreakCard";
 import axios from "axios";
@@ -38,7 +38,7 @@ const Home = () => {
 
   verifyUser();
 
-}, []);
+} , );
 
 if(loading){
   return <div>

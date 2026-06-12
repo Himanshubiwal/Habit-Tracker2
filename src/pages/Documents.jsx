@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import React, { useState } from "react";
+import  { useState } from "react";
 
 const Documents = () => {
   const [Open, setOpen] = useState(true);
