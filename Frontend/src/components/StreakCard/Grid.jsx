@@ -20,7 +20,7 @@ const Grid = (props) => {
     <div className="flex-1 flex flex-col gap-0.5">
       <div className="pl-3 text-white">{props.month}</div>
 
-      <div className="grid grid-rows-7  grid-flow-col gap-2 p-2">
+      <div className="grid grid-rows-7  grid-flow-col gap-1 p-0.5">
         {box.map((value, index) => (
           <div
             key={index}

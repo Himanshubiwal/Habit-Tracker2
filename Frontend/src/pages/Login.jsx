@@ -1,12 +1,11 @@
-import  { useState } from "react";
-
-import { registerUser } from "../api/auth.js";
+import { loginUser } from "../api/auth";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreateAccount = () => {
-  const [email, setemail] = useState("");
+const Login = () => {
   const [password, setpassword] = useState("");
   const [username, setusername] = useState("");
+
   const navigateto = useNavigate();
 
   const handleform = async (e) => {
@@ -14,99 +13,83 @@ const CreateAccount = () => {
 
     const data = {
       username,
-      email,
+
       password,
     };
-    
-try {
 
-  await registerUser(data);
-
-  navigateto("/");
-
-} catch(error){
-  console.log(error.name)
-  console.log(error.message);
-
-}
-
-
-
+    try {
+      await loginUser(data);
+        
+      navigateto("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+
+
   return (
-<div className="min-h-screen w-full bg-[#3e404a] flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-[#3e404a] flex items-center justify-center p-4">
       <div className="bg-[#2b3137] w-full max-w-md p-10 rounded-2xl shadow-2xl flex flex-col">
-        
         <h1 className="text-4xl font-extrabold text-amber-50 text-center mb-8 tracking-wide">
-          Create Account
+          Login Account
         </h1>
 
         <form className="flex flex-col gap-6" onSubmit={handleform}>
-          
           {/* Username Field */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="text-[#a5aab0] font-bold text-sm tracking-wide">
+            <label
+              htmlFor="username"
+              className="text-[#a5aab0] font-bold text-sm tracking-wide"
+            >
               Enter name
             </label>
             <input
               id="username"
               type="text"
               value={username}
-              onChange={(e) => {
-                setusername(e.target.value);
-              }}
+              onChange={(e) => setusername(e.target.value)}
               placeholder="username"
-              className="bg-[#202125] text-amber-50 h-12 w-full rounded-lg border border-gray-600 px-4 placeholder:text-[#a5aab0] placeholder:opacity-40 focus:outline-none focus:border-[#87919f] focus:ring-1 focus:ring-[#87919f] transition-all duration-200"
-            />
-          </div>
-
-          {/* Email Field */}
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-[#a5aab0] font-bold text-sm tracking-wide">
-              Enter email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
-              placeholder="example@12gmail.com"
               className="bg-[#202125] text-amber-50 h-12 w-full rounded-lg border border-gray-600 px-4 placeholder:text-[#a5aab0] placeholder:opacity-40 focus:outline-none focus:border-[#87919f] focus:ring-1 focus:ring-[#87919f] transition-all duration-200"
             />
           </div>
 
           {/* Password Field */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="text-[#a5aab0] font-bold text-sm tracking-wide">
+            <label
+              htmlFor="password"
+              className="text-[#a5aab0] font-bold text-sm tracking-wide"
+            >
               Enter password
             </label>
             <input
               id="password"
               type="password"
               value={password}
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
+              onChange={(e) => setpassword(e.target.value)}
               placeholder="password"
               className="bg-[#202125] text-amber-50 h-12 w-full rounded-lg border border-gray-600 px-4 placeholder:text-[#a5aab0] placeholder:opacity-40 focus:outline-none focus:border-[#87919f] focus:ring-1 focus:ring-[#87919f] transition-all duration-200"
             />
           </div>
-
+          <button
+            className="text-start h-1 text-gray-400 hover:text-amber-50"
+            onClick={()=>{
+                navigateto('/register')
+            }}
+          >
+            create account
+          </button>
           {/* Submit Button */}
           <button
             type="submit"
             className="mt-4 bg-[#626e7e] text-amber-50 font-bold h-12 w-full rounded-lg text-lg hover:bg-[#87919f] focus:ring-2 focus:ring-[#a5aab0] focus:ring-offset-2 focus:ring-offset-[#2b3137] focus:outline-none active:scale-[0.98] transition-all duration-200"
           >
-            register
+            Login
           </button>
-
         </form>
       </div>
     </div>
   );
 };
 
-export default CreateAccount;
+export default Login;

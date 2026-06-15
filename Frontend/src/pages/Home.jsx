@@ -1,17 +1,20 @@
 import Sidebar from "../components/Sidebar";
-import  { useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import StreakCard from "../components/StreakCard/StreakCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AddHabit from "../components/AddHabit";
+import AddHabitForm from "../components/AddHabitForm";
+import { HabitContext } from "../context/HabitDataProvider";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [loading, setloading] = useState(true);
   const [Open, setOpen] = useState(true);
-
-
+  
+const {Habits,OpenHabitForm,setOpenHabitForm } = useContext(HabitContext);
 
 
   useEffect(() => {
@@ -27,11 +30,11 @@ const Home = () => {
         }
       );
       setloading(false);
-      console.log(response.data);
+      
 
     } catch (error) {
 
-      navigate("/register");
+      navigate("/login");
       console.log(error.response.data)
     }
   }
@@ -41,7 +44,7 @@ const Home = () => {
 } , );
 
 if(loading){
-  return <div>
+  return <div className="bg-[#2B2D38] h-screen w-screen">
     <h1>loading</h1>
   </div>
 }
@@ -52,14 +55,41 @@ if(loading){
     setOpen(newOpen);
   }
 
+  
+
   return (
-    <div className="bg-[#2b2d38] flex flex-row p-4 gap-2">
+    <>
+    {
+      OpenHabitForm && <AddHabitForm/>
+    }
+        
+        <div className="bg-[#13131c] flex flex-row  gap-2">
       <Sidebar open={Open} />
       <div className="h-screen flex-1 gap-2 flex flex-col ">
         <Navbar fnc={change} name="Dashboard" />
-        <StreakCard />
+        <div className="flex-1 flex flex-row gap-2 flex-wrap p-2 overflow-scroll">
+          {
+          Habits.map((Habit,index)=>{
+            return <StreakCard key={index} habit={Habit.title} />
+          })
+          }
+          
+          
+          {/* <StreakCard habit="Gym" />
+          <StreakCard />
+          <StreakCard />
+          <StreakCard />
+          <StreakCard />
+          <StreakCard />
+          <StreakCard /> */}
+          <AddHabit/>
+        </div>
+        
+        
       </div>
     </div>
+    </>
+
   );
 };
 
