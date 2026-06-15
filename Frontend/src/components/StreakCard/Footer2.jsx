@@ -18,10 +18,10 @@ const Footer2 = () => {
 
       <div className="flex flex-row gap-3 text-[#abb9c6] text-bold items-center">
         <p>Less</p>
-        <div className="bg-[#305041] h-5 w-5 rounded-sm border-green-900 border"></div>
-        <div className="bg-[#3b7753] h-5 w-5 rounded-sm border-green-900 border"></div>
-        <div className="bg-[#45a065] h-5 w-5 rounded-sm border-green-900 border"></div>
-        <div className="bg-[#51c779] h-5 w-5 rounded-sm border-green-900 border"></div>
+        <div className="bg-[#305041] h-5 w-5 rounded-sm "></div>
+        <div className="bg-[#3b7753] h-5 w-5 rounded-sm "></div>
+        <div className="bg-[#45a065] h-5 w-5 rounded-sm "></div>
+        <div className="bg-[#51c779] h-5 w-5 rounded-sm "></div>
         <p>More</p>
       </div>
     </div>

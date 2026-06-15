@@ -12,7 +12,7 @@ import {
 const Sidebar = (props) => {
   return (
     <div
-      className={`h-153   bg-[#1e1f24] rounded-xl text-[#abb9c6] overflow-hidden  transition-all duration-[1000ms] ${props.open ? "w-40 p-2" : "w-0 p-0"} `}
+      className={`h-screen   bg-[#1f1f28]  text-[#abb9c6] overflow-hidden  transition-all duration-[500ms] ${props.open ? "w-40 p-2" : "w-0 p-0"} `}
     >
       <div className="font-extrabold h-15 border-b-2 border-gray-500 flex justify-center items-center">
         <h1 className="text-2xl">TRACKER</h1>
