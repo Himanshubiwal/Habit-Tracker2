@@ -1,7 +1,16 @@
 import axios  from "axios";
+import { useContext } from "react";
+import { HabitContext } from "../context/HabitDataProvider";
 
 
- async function registerUser(data){
+
+
+ async function RegisterUser(data){
+
+
+
+
+
     try {
 
 
@@ -35,7 +44,11 @@ import axios  from "axios";
 
 
 
-async function loginUser(data){
+async function LoginUser(data){
+
+
+
+
   try{
         if(!data.username && !data.username){
             throw new Error("username is required")
@@ -53,6 +66,8 @@ async function loginUser(data){
         }
       );
 
+
+      localStorage.setItem("email",response.data.user.email)
         console.log(response.data)
 
   }
@@ -63,4 +78,4 @@ async function loginUser(data){
 
 
 
-export  {loginUser,registerUser};
+export  {LoginUser,RegisterUser};

@@ -10,6 +10,7 @@ import CreateAccount from "./pages/CreateAccount";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import AddHabitForm from "./components/AddHabitForm";
+import Profile from "./pages/Profile";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/store" element={<Store />} />
       <Route path="/register" element={<CreateAccount />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<Profile />}   />
       
     </Routes>
   );
