@@ -67,7 +67,7 @@ if(loading){
       <Sidebar open={Open} />
       <div className="h-screen flex-1 gap-2 flex flex-col ">
         <Navbar fnc={change} name="Dashboard" />
-        <div className="flex-1 flex flex-row gap-2 flex-wrap p-2 overflow-scroll">
+        <div className="flex-1 flex flex-row gap-6 flex-wrap p-2 overflow-scroll">
           {
           Habits.map((Habit,index)=>{
             return <StreakCard key={index} habit={Habit.title} />
@@ -75,13 +75,7 @@ if(loading){
           }
           
           
-          {/* <StreakCard habit="Gym" />
-          <StreakCard />
-          <StreakCard />
-          <StreakCard />
-          <StreakCard />
-          <StreakCard />
-          <StreakCard /> */}
+
           <AddHabit/>
         </div>
         

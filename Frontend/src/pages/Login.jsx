@@ -1,25 +1,27 @@
-import { loginUser } from "../api/auth";
-import { useState } from "react";
+import { LoginUser } from "../api/auth";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HabitContext } from "../context/HabitDataProvider";
 
 const Login = () => {
-  const [password, setpassword] = useState("");
-  const [username, setusername] = useState("");
+
 
   const navigateto = useNavigate();
-
+  const {username,setpassword,setusername,password} = useContext(HabitContext)
   const handleform = async (e) => {
     e.preventDefault();
 
     const data = {
       username,
-
       password,
     };
-
+    
     try {
-      await loginUser(data);
+      await LoginUser(data);
         
+      localStorage.setItem("username",username)
+      
+
       navigateto("/");
     } catch (error) {
       console.log(error);

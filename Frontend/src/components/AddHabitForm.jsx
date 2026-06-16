@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { HabitContext } from "../context/HabitDataProvider";
 
 const AddHabitForm = () => {
@@ -27,8 +27,8 @@ const AddHabitForm = () => {
 
   return (
     <div className="fixed h-screen w-screen z-10  backdrop-blur-xs flex justify-center items-center ">
-      <div className=" overflow-hidden bg-[#181820] text-[#cac7d3] h-110 w-84 rounded-xl border-1 border-[#3d4a3e]  ">
-        <div className="h-12  flex justify-between p-2 items-center pl-3 border-[#3d4a3e] border-b-1 bg-[#1f1f28] font-bold">
+      <div className=" overflow-hidden bg-[#181820] text-[#cac7d3] h-110 w-84 rounded-xl `border-1` border-[#3d4a3e]  ">
+        <div className="h-12  flex justify-between p-2 items-center pl-3 border-[#3d4a3e] `border-b-1` bg-[#1f1f28] font-bold">
           <h1>Add New Habit</h1>
           <h1
             onClick={CloseForm}
@@ -43,21 +43,24 @@ const AddHabitForm = () => {
           onSubmit={handleSubmit}
         >
           <label>Title</label>
-          <input required
+          <input
+            required
             name="title"
             className="border-[#3d4a3e] border bg-[#1f1f28] rounded-sm p-2 focus:border-[#4ba36b] outline-none "
             type="text"
             placeholder="e.g, Daily Run"
           />
           <label>Description</label>
-          <input required
+          <input
+            required
             name="description"
             className="border-[#3d4a3e] bg-[#1f1f28] border rounded-sm p-2 focus:border-[#4ba36b] outline-none "
             type="text"
             placeholder="e.g,Morning job in the to clear my head"
           />
           <label>Category</label>
-          <select required
+          <select
+            required
             name="category"
             className="border-[#3d4a3e] bg-[#1f1f28] border rounded-sm p-2 focus:border-[#4ba36b] outline-none "
           >
@@ -70,7 +73,8 @@ const AddHabitForm = () => {
           </select>
 
           <label>Frequency</label>
-          <input required
+          <input
+            required
             readOnly
             name="frequency"
             value="daily"
@@ -78,7 +82,8 @@ const AddHabitForm = () => {
             className=" hidden border-[#3d4a3e] border rounded-sm p-2 "
             type="radio"
           />
-          <input required
+          <input
+            required
             readOnly
             name="frequency"
             value="weekly"

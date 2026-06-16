@@ -1,6 +1,6 @@
 import  { useState } from "react";
 
-import { registerUser } from "../api/auth.js";
+import { RegisterUser } from "../api/auth.js";
 import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
@@ -20,7 +20,7 @@ const CreateAccount = () => {
     
 try {
 
-  await registerUser(data);
+  await RegisterUser(data);
 
   navigateto("/");
 

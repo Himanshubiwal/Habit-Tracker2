@@ -24,7 +24,7 @@ const right_scroll = () => {
 };
   return (
     
-          <div className="w-146 h-90 bg-[#1f1f28] border-[#2d3532] border-2 rounded-2xl relative  p-3 flex flex-col justify-between">
+          <div className="w-142 h-90 bg-[#1f1f28] border-[#2d3532] border-2 rounded-2xl relative  p-3 flex flex-col justify-between">
       <Navbar2
         habit={habit}
         left_scroll={left_scroll}
