@@ -30,7 +30,7 @@ async function RegisterUser(data) {
 
 async function LoginUser(data) {
   try {
-    if (!data.username && !data.username) {
+    if (!data.username) {
       throw new Error("username is required");
     }
 
