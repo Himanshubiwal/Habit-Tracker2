@@ -22,7 +22,7 @@ export const ActivityCard = ({ activities = [] }) => {
           <div key={idx} className="relative pl-6">
 
             <div
-              className={`absolute -left-[13px] top-1 w-6 h-6 rounded-full flex items-center justify-center ${item.iconBg} ${item.iconColor} border-4 border-[#1c1f28]`}
+              className={`absolute `` top-1 w-6 h-6 rounded-full flex items-center justify-center ${item.iconBg} ${item.iconColor} border-4 border-[#1c1f28]`}
             >
               {item.icon}
             </div>
