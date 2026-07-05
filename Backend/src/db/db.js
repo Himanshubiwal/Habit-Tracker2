@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 async function connectDB() {
   try {
     if (!process.env.MONGO_URI) {
-      return res.status(500).json({
-        message: "MONGO_URI not found",
-      });
+      throw new Error("MONGO_URI not found");
     }
 
     await mongoose.connect(process.env.MONGO_URI);

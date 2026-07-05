@@ -8,6 +8,8 @@ import AddHabit from "../components/AddHabit";
 import AddHabitForm from "../components/AddHabitForm";
 import { HabitContext } from "../context/HabitDataProvider";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -23,8 +25,8 @@ const {Habits,OpenHabitForm,setOpenHabitForm } = useContext(HabitContext);
 
     try {
 
-      const response = await axios.get(
-        "http://localhost:3000/api/auth/home",
+      await axios.get(
+        `${API_BASE_URL}/api/auth/home`,
         {
           withCredentials: true,
         }

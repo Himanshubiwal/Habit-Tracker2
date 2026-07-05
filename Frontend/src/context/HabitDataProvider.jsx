@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react'
 import axios from 'axios';
 export const HabitContext = createContext()
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const HabitDataProvider = ({children}) => {
 
@@ -60,7 +61,7 @@ async function AddNewHabit(data) {
     console.log(data)
     try{
     const response = await axios.post(
-        "http://localhost:3000/api/habits/createhabit",
+        `${API_BASE_URL}/api/habits/createhabit`,
         data,
         {
             withCredentials : true
