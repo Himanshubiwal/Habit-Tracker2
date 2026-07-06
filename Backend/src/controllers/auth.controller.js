@@ -96,7 +96,7 @@ async function accessProfile(req, res) {
 }
 
 module.exports = {
-  registerUser,
+  registerUser, 
   loginUser,
   logoutUser,
   accessProfile,

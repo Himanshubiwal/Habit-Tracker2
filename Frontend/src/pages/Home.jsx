@@ -1,5 +1,5 @@
 import Sidebar from "../components/Sidebar";
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import StreakCard from "../components/StreakCard/StreakCard";
 import axios from "axios";
@@ -15,77 +15,60 @@ const Home = () => {
 
   const [loading, setloading] = useState(true);
   const [Open, setOpen] = useState(true);
-  
-const {Habits,OpenHabitForm,setOpenHabitForm } = useContext(HabitContext);
 
+  const { Habits, OpenHabitForm, setOpenHabitForm } = useContext(HabitContext);
 
   useEffect(() => {
-
-  async function verifyUser() {
-
-    try {
-
-      await axios.get(
-        `${API_BASE_URL}/api/auth/home`,
-        {
+    async function verifyUser() {
+      try {
+        await axios.get(`${API_BASE_URL}/api/auth/home`, {
           withCredentials: true,
-        }
-      );
-      setloading(false);
-      
-
-    } catch (error) {
-
-      navigate("/login");
-      console.log(error.response.data)
+        });
+        setloading(false);
+      } catch (error) {
+        console.log("User not authenticated");
+        navigate("/login");
+        console.log(error.response.data);
+      }
+      finally {
+        setloading(false);
+      }
     }
+
+    verifyUser();
+  },[]);
+
+  if (loading) {
+    return (
+      <div className="bg-[#2B2D38] h-screen w-screen">
+        <h1>loading</h1>
+      </div>
+    );
   }
-
-  verifyUser();
-
-} , );
-
-if(loading){
-  return <div className="bg-[#2B2D38] h-screen w-screen">
-    <h1>loading</h1>
-  </div>
-}
-
 
   function change() {
     const newOpen = !Open;
     setOpen(newOpen);
   }
 
-  
-
   return (
     <>
-    {
-      OpenHabitForm && <AddHabitForm/>
-    }
-        
-        <div className="bg-[#13131c] flex flex-row  gap-2">
-      <Sidebar open={Open} />
-      <div className="h-screen flex-1 gap-2 flex flex-col ">
-        <Navbar fnc={change} name="Dashboard" />
-        <div className="flex-1 flex flex-row gap-6 flex-wrap p-2 overflow-scroll">
-          {
-          Habits.map((Habit,index)=>{
-            return <StreakCard key={index} habit={Habit.title} />
-          })
-          }
-          
-          
+      {OpenHabitForm && <AddHabitForm />}
 
-          <AddHabit/>
+      <div className="bg-[#13131c] flex flex-row  gap-2">
+        <Sidebar open={Open} />
+        <div className="h-screen flex-1 gap-2 flex flex-col ">
+          <Navbar fnc={change} name="Dashboard" />
+          <div className="flex-1 flex flex-row gap-6 flex-wrap p-2 overflow-scroll">
+            {Habits.map((Habit, index) => {
+              return <StreakCard key={index} habit={Habit.title} />;
+            })}
+
+            <AddHabit />
+          </div>
         </div>
-        
-        
       </div>
-    </div>
     </>
-
   );
 };
 
