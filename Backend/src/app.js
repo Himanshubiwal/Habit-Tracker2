@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookeParser());
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: true,
     credentials: true,
   }),
 );
