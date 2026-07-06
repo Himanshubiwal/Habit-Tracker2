@@ -29,7 +29,7 @@ async function registerUser(req, res) {
     );
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "none",
+      sameSite: "None",
       secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -72,7 +72,12 @@ async function loginUser(req, res) {
     process.env.JWT_SECRET,
   );
 
-  res.cookie("token", token);
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
 
   return res.status(200).json({
     message: "login succussfully",
@@ -85,7 +90,7 @@ async function loginUser(req, res) {
 }
 
 async function logoutUser(req, res) {
-  res.clearCookie("token", { httpOnly: true, sameSite: "none", secure: true });
+  res.clearCookie("token", { httpOnly: true, sameSite: "None", secure: true });
   res.status(200).json({ message: "User logged out successfully" });
 }
 
